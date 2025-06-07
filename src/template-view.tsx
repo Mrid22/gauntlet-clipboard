@@ -17,21 +17,26 @@ export default function View(): ReactElement {
         item.toLowerCase().includes(searchText.toLowerCase()),
       )
     : data;
+
+  let items = filteredData.map((item: string, index: number) => (
+    <List.Item id={item} key={index} title={item}></List.Item>
+  ));
+
   return (
     <List
       actions={
         <ActionPanel title="Actions">
           <ActionPanel.Action
             label="Add to Clipboard"
-            onAction={async () => {
+            onAction={async (id: string | undefined) => {
               if (searchText) {
                 if (!data.includes(searchText)) {
                   await Clipboard.writeText(searchText);
-                  showHud(searchText + " Added to Clipboard");
-                } else {
-                  setSearchText("");
+                  showHud(searchText + " Added to History");
                 }
-              } else {
+              } else if (id) {
+                await Clipboard.writeText(id);
+                showHud(searchText + " Copied to Clipboard");
               }
             }}
           />
@@ -43,9 +48,7 @@ export default function View(): ReactElement {
         value={searchText}
         onChange={setSearchText}
       />
-      {filteredData.map((item: string, index: number) => (
-        <List.Item id={`item-${index}`} key={index} title={item}></List.Item>
-      ))}
+      {items}
     </List>
   );
 }
