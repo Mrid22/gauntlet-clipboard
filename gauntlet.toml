@@ -1,14 +1,27 @@
 [gauntlet]
-name = 'Template Plugin'
+name = 'Clipboard Manager'
 description = """
-Template Plugin Description
+Clipboard Manager for Gauntlet.
 """
 
 [[entrypoint]]
 id = 'template-view'
-name = 'Template view'
+name = 'Clipboard History'
 path = 'src/template-view.tsx'
 type = 'view'
 description = """
-Template Plugin Entrypoint Description
+Clipboard History
 """
+
+[[entrypoint]]
+id = 'update-history'
+name = 'Update History'
+path = 'src/update-history.tsx'
+type = 'entrypoint-generator'
+description = 'Updates the clipboard history'
+
+
+[permissions]
+clipboard = ["read", "write", "clear"]
+main_search_bar = ["read"]
+
