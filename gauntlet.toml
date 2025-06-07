@@ -1,0 +1,27 @@
+[gauntlet]
+name = 'Clipboard Manager'
+description = """
+Clipboard Manager for Gauntlet.
+"""
+
+[[entrypoint]]
+id = 'template-view'
+name = 'Clipboard History'
+path = 'src/template-view.tsx'
+type = 'view'
+description = """
+Clipboard History
+"""
+
+[[entrypoint]]
+id = 'update-history'
+name = 'Update History'
+path = 'src/update-history.tsx'
+type = 'entrypoint-generator'
+description = 'Updates the clipboard history'
+
+
+[permissions]
+clipboard = ["read", "write", "clear"]
+main_search_bar = ["read"]
+
