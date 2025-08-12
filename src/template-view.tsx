@@ -18,9 +18,11 @@ export default function View(): ReactElement {
       )
     : data;
 
-  let items = filteredData.map((item: string, index: number) => (
-    <List.Item id={item} key={index} title={item}></List.Item>
-  ));
+  let items = filteredData
+    .map((item: string, index: number) => (
+      <List.Item id={item} key={index} title={item}></List.Item>
+    ))
+    .reverse();
 
   return (
     <List
