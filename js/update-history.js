@@ -26,7 +26,9 @@ function View() {
     const filteredData = searchText
         ? data.filter((item) => item.toLowerCase().includes(searchText.toLowerCase()))
         : data;
-    let items = filteredData.map((item, index) => (jsx(List.Item, { id: item, title: item }, index)));
+    let items = filteredData
+        .map((item, index) => (jsx(List.Item, { id: item, title: item }, index)))
+        .reverse();
     return (jsxs(List, { actions: jsx(ActionPanel, { title: "Actions", children: jsx(ActionPanel.Action, { label: "Add to Clipboard", onAction: async (id) => {
                     if (searchText) {
                         if (!data.includes(searchText)) {
@@ -42,4 +44,4 @@ function View() {
 }
 
 export { View as V, UpdateHistory as default };
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXBkYXRlLWhpc3RvcnkuanMiLCJzb3VyY2VzIjpbXSwic291cmNlc0NvbnRlbnQiOltdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7In0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXBkYXRlLWhpc3RvcnkuanMiLCJzb3VyY2VzIjpbXSwic291cmNlc0NvbnRlbnQiOltdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
